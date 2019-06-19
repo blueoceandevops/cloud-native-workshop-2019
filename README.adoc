@@ -1,4 +1,4 @@
-= PAL Cloud Native Applications Workshop
+= PAL Cloud Native Workshop
 == Overview
 [.lead]
 This one day hands-on classroom style session will provide developers with hands on experience of building cloud native applications using Spring Boot, and Cloud Foundry. The session includes presentations, demos and hands on labs.
