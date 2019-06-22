@@ -13,7 +13,7 @@ Artifact:: +cloud-native-spring+
 
 . In the dependencies section, add the following manually:
 +
-*Web* *Rest Repositories* *JPA* *H2* *Actuator*
+*Web*,*Rest Repositories*, *JPA*, *H2*, and *Actuator*
 
 . Click the _Generate Project_ button. Your browser will download a zip file.
 
@@ -23,7 +23,7 @@ Your directory structure should now look like:
 +
 [source, bash]
 ---------------------------------------------------------------------
-cloud-native-workshop-2019:
+cloud-native-workshop:
 ├── labs
 │   ├── my_work
 │   │   ├── cloud-native-spring
@@ -95,9 +95,9 @@ public class CloudNativeSpringApplication {
 
 == Run the _cloud-native-spring_ Application
 
-. In a terminal, change working directory to *CN-Workshop-/labs/my_work/cloud-native-spring*
+. In a terminal, change working directory to *cloud-native-workshop/labs/my_work/cloud-native-spring*
 +
-$ cd /CN-Workshop/labs/my_work/cloud-native-spring
+$ cd /cloud-native-workshop/labs/my_work/cloud-native-spring
 
 . Run the application
 +
