@@ -1,9 +1,10 @@
 = Presentation Content
 
- * Intro: link:presentations/Intro_CF_at_Boeing.pptx[_Pivotal Cloud Foundry at Boeing_]
- * Session 1: link:presentations/Session_1_CN_Design_DDD.pptx[_Cloud Native Design, Domain Driven Design, & Microservices_] 
- * Session 2: link:presentations/Session_2_Intro_Boot.pptx[_Introducing Spring Boot_]
- * Session 3: link:presentations/Session_3_Polyglot_Persist.pptx[_Polyglot Persistence with Spring Data REST_]
- * Session 4: link:presentations/Session_4_Advanced_Boot.pptx[_Advancing Spring Boot with Actuator and Profiles_]
- * Session 5: link:presentations/Session_5_Intro_SC.pptx[_Introducing Spring Cloud Netflix_]
+ * Intro: link:presentations/Intro-PAL-CN-workshop-at-EY.pptx[_PAL workshop at EY_]
+ * Session 1: link:presentations/Session_1_The Cloud Native Enterprise.pptx[_Cloud Enterprise, Domain Driven Design, & Microservices_]
+ * Session 2: link:presentations/Session_2_PAL_Overview.pptx[_Cloud Enterprise, Domain Driven Design, & Microservices_]
+ * Session 2: link:presentations/Session_3_Intro_Boot.pptx[_Introducing Spring Boot_]
+ * Session 3: link:presentations/Session_4_Polyglot_Persist.pptx[_Polyglot Persistence with Spring Data REST_]
+ * Session 4: link:presentations/Session_5_Advanced_Boot.pptx[_Advancing Spring Boot with Actuator and Profiles_]
+ * Session 5: link:presentations/Session_6_Intro_SC.pptx[_Introducing Spring Cloud Netflix_]
  
