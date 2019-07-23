@@ -32,13 +32,13 @@ As you can see, only 3 Actuator endpoints are exposed by default. In order to ex
 management.endpoints.web.exposure.include=*
 
 
-+
-Try out the following endpoints. The output is omitted here because it can be quite large:
-+
+
+Restart the application and try out the following endpoints. The output is omitted here because it can be quite large:
+
 http://localhost:8080/actuator/health
-+
+
 Displays Application and Datasource health information.  This can be customized based on application functionality, which we'll do later.
-+
+
 http://localhost:8080/actuator/beans
 +
 Dumps all of the beans in the Spring context.
