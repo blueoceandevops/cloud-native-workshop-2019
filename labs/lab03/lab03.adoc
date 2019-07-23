@@ -29,9 +29,12 @@ In the browser, go to the URL http://localhost:8080/actuator/. This shows us an 
 
 As you can see, only 3 Actuator endpoints are exposed by default. In order to expose more endpoints, we need to add an include or exclude configuration to the application.properties file. We will add all endpoints to the configuration, but you can also limit the exposed endpoints by means of a comma-separated list. In order to expose all endpoints, we add the following configuration to the application.properties file:
 
++
+[source,bash]
+---------------------------------------------------------------------
 management.endpoints.web.exposure.include=*
 
-
+---------------------------------------------------------------------
 
 Restart the application and try out the following endpoints. The output is omitted here because it can be quite large:
 
@@ -67,10 +70,14 @@ http://localhost:8080/actuator/trace
 
 Displays trace information (by default the last few HTTP requests).
 
-. Stop the cloud-native-spring application.
+**The Actuator Health Endpoint**
+
+The Actuator health endpoint, by default, shows no detail. Several built-in healthindicators are present, and the information to show is collected from these healthindicators. But by default, you will only see the following:
 
 
-. Stop the cloud-native-spring application.
+{
+    "status": "UP"
+}
 
 . Create the class _io.pivotal.FlappingHealthIndicator_ (/cloud-native-spring/src/main/java/io/pivotal/FlappingHealthIndicator.java) and into it paste the following code:
 +
