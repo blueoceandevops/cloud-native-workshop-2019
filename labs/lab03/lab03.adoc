@@ -74,10 +74,15 @@ Displays trace information (by default the last few HTTP requests).
 
 The Actuator health endpoint, by default, shows no detail. Several built-in healthindicators are present, and the information to show is collected from these healthindicators. But by default, you will only see the following:
 
-
++
+[source,bash]
+---------------------------------------------------------------------
 {
     "status": "UP"
 }
+
+---------------------------------------------------------------------
+
 
 . Create the class _io.pivotal.FlappingHealthIndicator_ (/cloud-native-spring/src/main/java/io/pivotal/FlappingHealthIndicator.java) and into it paste the following code:
 +
