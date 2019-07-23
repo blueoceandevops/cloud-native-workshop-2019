@@ -39,10 +39,6 @@ http://localhost:8080/actuator/beans
 +
 Dumps all of the beans in the Spring context.
 +
-http://localhost:8080/actuator/autoconfig
-+
-Dumps all of the auto-configuration performed as part of application bootstrapping.
-+
 http://localhost:8080/actuator/configprops
 +
 Displays a collated list of all @ConfigurationProperties.
@@ -55,7 +51,11 @@ http://localhost:8080/actuator/mappings
 +
 Dumps all URI request mappings and the controller methods to which they are mapped.
 +
-http://localhost:8080/actuator/dump
+http://localhost:8080/actuator/heapdump
++
+Performs a heap dump.
+
+http://localhost:8080/actuator/threaddump
 +
 Performs a thread dump.
 +
