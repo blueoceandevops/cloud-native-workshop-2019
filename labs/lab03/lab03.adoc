@@ -14,7 +14,8 @@ Spring Boot includes a number of additional features to help you monitor and man
 </dependency>
 ---------------------------------------------------------------------
 
-. Actuator Endpoint
+**Actuator Endpoint**
+
 Now that we have set up our simple application, it is time to take a look at what Spring Actuator has to offer. In the browser, go to the URL http://localhost:8080/actuator/. This shows us an overview of the exposed Actuator endpoints. Compared to Spring Boot 1, the Actuator endpoints all reside after this Actuator endpoint. This should prevent naming collisions with your own endpoints whenever they would have the same name as Actuator endpoints. 
 
 . Run the updated application
