@@ -27,6 +27,10 @@ $ mvn clean spring-boot:run
 
 In the browser, go to the URL http://localhost:8080/actuator/. This shows us an overview of the exposed Actuator endpoints. Compared to Spring Boot 1, the Actuator endpoints all reside after this Actuator endpoint. This should prevent naming collisions with your own endpoints whenever they would have the same name as Actuator endpoints. 
 
+As you can see, only 3 Actuator endpoints are exposed by default. In order to expose more endpoints, we need to add an include or exclude configuration to the application.properties file. We will add all endpoints to the configuration, but you can also limit the exposed endpoints by means of a comma-separated list. In order to expose all endpoints, we add the following configuration to the application.properties file:
+
+management.endpoints.web.exposure.include=*
+
 
 +
 Try out the following endpoints. The output is omitted here because it can be quite large:
