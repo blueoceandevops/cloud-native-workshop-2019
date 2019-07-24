@@ -29,7 +29,7 @@ In the browser, go to the URL http://localhost:8080/actuator/. This shows us an 
 
 As you can see, only 3 Actuator endpoints are exposed by default. In order to expose more endpoints, we need to add an include or exclude configuration to the application.properties file. We will add all endpoints to the configuration, but you can also limit the exposed endpoints by means of a comma-separated list. In order to expose all endpoints, we add the following configuration to the application.properties file:
 
-+
+
 [source,bash]
 ---------------------------------------------------------------------
 management.endpoints.web.exposure.include=*
@@ -70,11 +70,31 @@ http://localhost:8080/actuator/trace
 
 Displays trace information (by default the last few HTTP requests).
 
+**Secure the Endpoints**
+
+Most of the time, we do not want this kind of information to be accessible by everyone. In that case, we can secure the Actuator endpoints. First of all, we will add Spring Security to the pom:
+
+[source,bash]
+---------------------------------------------------------------------
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-security</artifactId>
+</dependency>
+---------------------------------------------------------------------
+
+Just by adding the above dependency Spring  Security already us a login page when trying to access the Actuator endpoints and also our own base endpoint. We can login with user *user* and the password which is available in the Spring Boot log. This looks like the following (of course the hash changes after each startup):
+
+[source,bash]
+---------------------------------------------------------------------
+Using generated security password: 8da882c3-4bbb-4e71-88c2-13399d9f0724
+---------------------------------------------------------------------
+
+
 **The Actuator Health Endpoint**
 
 The Actuator health endpoint, by default, shows no detail. Several built-in healthindicators are present, and the information to show is collected from these healthindicators. But by default, you will only see the following:
 
-+
+
 [source,bash]
 ---------------------------------------------------------------------
 {
