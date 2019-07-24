@@ -97,9 +97,21 @@ spring.security.user.password=pal123
 spring.security.user.roles=ACTUATOR
 ---------------------------------------------------------------------
 
+Now let's assume that we only want to secure the Actuator endpoints and not our own base endpoint. According to the Spring documentation (https://github.com/spring-projects/spring-boot/wiki/Spring-Boot-Security-2.0)we need to add the following configuration class:
 
-
-https://github.com/spring-projects/spring-boot/wiki/Spring-Boot-Security-2.0
+[source,bash]
+---------------------------------------------------------------------
+@Configuration
+public class ActuatorSecurity extends WebSecurityConfigurerAdapter {
+  @Override
+  protected void configure(HttpSecurity http) throws Exception {
+    http.requestMatcher(EndpointRequest.toAnyEndpoint()).authorizeRequests()
+      .anyRequest().hasRole("ADMIN")
+      .and()
+      .httpBasic();
+  }
+}
+---------------------------------------------------------------------
 
 **The Actuator Health Endpoint**
 
