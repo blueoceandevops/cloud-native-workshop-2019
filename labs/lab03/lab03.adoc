@@ -97,22 +97,6 @@ spring.security.user.password=pal123
 spring.security.user.roles=ACTUATOR
 ---------------------------------------------------------------------
 
-Now let's assume that we only want to secure the Actuator endpoints and not our own base endpoint. According to the Spring documentation (https://github.com/spring-projects/spring-boot/wiki/Spring-Boot-Security-2.0)we need to add the following configuration class:
-
-[source,bash]
----------------------------------------------------------------------
-@Configuration
-public class ActuatorSecurity extends WebSecurityConfigurerAdapter {
-  @Override
-  protected void configure(HttpSecurity http) throws Exception {
-    http.requestMatcher(EndpointRequest.toAnyEndpoint()).authorizeRequests()
-      .anyRequest().hasRole("ADMIN")
-      .and()
-      .httpBasic();
-  }
-}
----------------------------------------------------------------------
-
 **The Actuator Health Endpoint**
 
 The Actuator health endpoint, by default, shows no detail. Several built-in healthindicators are present, and the information to show is collected from these healthindicators. But by default, you will only see the following:
@@ -124,6 +108,39 @@ The Actuator health endpoint, by default, shows no detail. Several built-in heal
     "status": "UP"
 }
 
+---------------------------------------------------------------------
+
+In order to see the information of the built-in healthindicators, we need to add the following line to your application.properties.  This way, all information from the retrieved healthindicators is being shown. The default value is never, never showing the health indicators information. We choose to show the health indicator information when an authorized user is requesting the information.
+
+[source,bash]
+---------------------------------------------------------------------
+management.endpoint.health.show-details=when-authorized
+---------------------------------------------------------------------
+
+Re-run the application and invoke the Actuator health endpoint, the following information is shown in our case:
+
+[source,bash]
+---------------------------------------------------------------------
+{
+"status": "UP",
+"details": {
+"db": {
+"status": "UP",
+"details": {
+"database": "H2",
+"hello": 1
+}
+},
+"diskSpace": {
+"status": "UP",
+"details": {
+"total": 508828839936,
+"free": 395953082368,
+"threshold": 10485760
+}
+}
+}
+}
 ---------------------------------------------------------------------
 
 
