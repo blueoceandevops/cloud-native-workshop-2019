@@ -88,7 +88,7 @@ Just by adding the above dependency Spring  Security presents us a login page wh
 ---------------------------------------------------------------------
 Using generated security password: 8da882c3-4bbb-4e71-88c2-13399d9f0724
 ---------------------------------------------------------------------
-We cab put our own user name and passwd also by adding the following lines to the application.properties file :
+We can put our own user name and passwd also by adding the following lines to the application.properties file :
 
 [source,bash]
 ---------------------------------------------------------------------
