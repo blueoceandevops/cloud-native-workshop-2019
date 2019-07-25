@@ -82,7 +82,7 @@ Most of the time, we do not want this kind of information to be accessible by ev
 </dependency>
 ---------------------------------------------------------------------
 
-Just by adding the above dependency Spring  Security presents us a login page when trying to access the Actuator endpoints and also our own base endpoint. We can login with user *user* and the password which is available in the Spring Boot log. This looks like the following (of course the hash changes after each startup):
+Just by adding the above dependency Spring  Security presents us with a login page when trying to access the Actuator endpoints and also our own base endpoint. We can login with user *user* and the password which is available in the Spring Boot log. This looks like the following (of course the hash changes after each startup):
 
 [source,bash]
 ---------------------------------------------------------------------
