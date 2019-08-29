@@ -340,40 +340,34 @@ http://localhost:8080/cities/search
 [source,bash]
 ---------------------------------------------------------------------
 $ curl -i "localhost:8080/cities/search"
-HTTP/1.1 200 OK
-Server: Apache-Coyote/1.1
-X-Application-Context: application
-Content-Type: application/hal+json
+HTTP/1.1 200 
+Content-Type: application/hal+json;charset=UTF-8
 Transfer-Encoding: chunked
-Date: Tue, 27 May 2014 20:38:32 GMT
+Date: Thu, 29 Aug 2019 12:27:24 GMT
 
-"_links" : {
-    "first" : {
-      "href" : "http://localhost:8080/cities?page=0&size=20"
-    },
-    "self" : {
-      "href" : "http://localhost:8080/cities{?page,size,sort}",
+{
+  "_links" : {
+    "nameContains" : {
+      "href" : "http://localhost:8080/cities/search/nameContains{?q,page,size,sort}",
       "templated" : true
     },
-    "next" : {
-      "href" : "http://localhost:8080/cities?page=1&size=20"
+    "name" : {
+      "href" : "http://localhost:8080/cities/search/name{?q,page,size,sort}",
+      "templated" : true
     },
-    "last" : {
-      "href" : "http://localhost:8080/cities?page=2137&size=20"
+    "postalCode" : {
+      "href" : "http://localhost:8080/cities/search/postalCode{?q,page,size,sort}",
+      "templated" : true
     },
-    "profile" : {
-      "href" : "http://localhost:8080/profile/cities"
+    "state" : {
+      "href" : "http://localhost:8080/cities/search/state{?q,page,size,sort}",
+      "templated" : true
     },
-    "search" : {
+    "self" : {
       "href" : "http://localhost:8080/cities/search"
     }
-  },
-  "page" : {
-    "size" : 20,
-    "totalElements" : 42741,
-    "totalPages" : 2138,
-    "number" : 0
   }
+}
 
 ---------------------------------------------------------------------
 +
