@@ -120,116 +120,28 @@ $ curl -i http://localhost:8080/cities
 HTTP/1.1 200 
 Content-Type: application/hal+json;charset=UTF-8
 Transfer-Encoding: chunked
-Date: Thu, 29 Aug 2019 11:14:03 GMT
+Date: Thu, 29 Aug 2019 11:42:44 GMT
 
 {
   "_embedded" : {
-    "cities" : [ {
-      "name" : "HOLTSVILLE",
-      "country" : "SUFFOLK",
-      "stateCode" : "NY",
-      "postalCode" : "00501",
-      "latitude" : "+40.922326",
-      "longitude" : "-072.637078",
-      "_links" : {
-        "self" : {
-          "href" : "http://localhost:8080/cities/1"
-        },
-        "city" : {
-          "href" : "http://localhost:8080/cities/1"
-        }
-      }
-    }, {
-      "name" : "HOLTSVILLE",
-      "country" : "SUFFOLK",
-      "stateCode" : "NY",
-      "postalCode" : "00544",
-      "latitude" : "+40.922326",
-      "longitude" : "-072.637078",
-      "_links" : {
-        "self" : {
-          "href" : "http://localhost:8080/cities/2"
-        },
-        "city" : {
-          "href" : "http://localhost:8080/cities/2"
-        }
-      }
-    }, {
-      "name" : "ADJUNTAS",
-      "country" : "ADJUNTAS",
-      "stateCode" : "PR",
-      "postalCode" : "00601",
-      "latitude" : "+18.165273",
-      "longitude" : "-066.722583",
-      "_links" : {
-        "self" : {
-          "href" : "http://localhost:8080/cities/3"
-        },
-        "city" : {
-          "href" : "http://localhost:8080/cities/3"
-        }
-      }
-    },
-    //......
-     {
-      "name" : "CAMUY",
-      "country" : "CAMUY",
-      "stateCode" : "PR",
-      "postalCode" : "00627",
-      "latitude" : "+18.477891",
-      "longitude" : "-066.854770",
-      "_links" : {
-        "self" : {
-          "href" : "http://localhost:8080/cities/19"
-        },
-        "city" : {
-          "href" : "http://localhost:8080/cities/19"
-        }
-      }
-    }, {
-      "name" : "CASTANER",
-      "country" : "LARES",
-      "stateCode" : "PR",
-      "postalCode" : "00631",
-      "latitude" : "+18.269187",
-      "longitude" : "-066.864993",
-      "_links" : {
-        "self" : {
-          "href" : "http://localhost:8080/cities/20"
-        },
-        "city" : {
-          "href" : "http://localhost:8080/cities/20"
-        }
-      }
-    } ]
+    "cities" : [ ]
   },
   "_links" : {
-    "first" : {
-      "href" : "http://localhost:8080/cities?page=0&size=20"
-    },
     "self" : {
       "href" : "http://localhost:8080/cities{?page,size,sort}",
       "templated" : true
     },
-    "next" : {
-      "href" : "http://localhost:8080/cities?page=1&size=20"
-    },
-    "last" : {
-      "href" : "http://localhost:8080/cities?page=2137&size=20"
-    },
     "profile" : {
       "href" : "http://localhost:8080/profile/cities"
-    },
-    "search" : {
-      "href" : "http://localhost:8080/cities/search"
     }
   },
   "page" : {
     "size" : 20,
-    "totalElements" : 42741,
-    "totalPages" : 2138,
+    "totalElements" : 0,
+    "totalPages" : 0,
     "number" : 0
   }
+}
   
   
 ---------------------------------------------------------------------
