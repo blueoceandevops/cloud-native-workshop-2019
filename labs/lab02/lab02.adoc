@@ -164,53 +164,112 @@ $ mvn clean spring-boot:run
 [source,bash]
 ---------------------------------------------------------------------
 $ curl -i localhost:8080/cities
-HTTP/1.1 200 OK
-Server: Apache-Coyote/1.1
-X-Application-Context: application
-Content-Type: application/hal+json
+HTTP/1.1 200 
+Content-Type: application/hal+json;charset=UTF-8
 Transfer-Encoding: chunked
-Date: Tue, 27 May 2014 19:59:58 GMT
+Date: Thu, 29 Aug 2019 10:47:50 GMT
 
 {
-  "_links" : {
-    "next" : {
-      "href" : "http://localhost:8080/cities?page=1&size=20"
-    },
-    "self" : {
-      "href" : "http://localhost:8080/cities{?page,size,sort}",
-      "templated" : true
-    }
-  },
   "_embedded" : {
     "cities" : [ {
       "name" : "HOLTSVILLE",
-      "county" : "SUFFOLK",
       "stateCode" : "NY",
       "postalCode" : "00501",
       "latitude" : "+40.922326",
       "longitude" : "-072.637078",
+      "county" : "SUFFOLK",
       "_links" : {
         "self" : {
           "href" : "http://localhost:8080/cities/1"
+        },
+        "city" : {
+          "href" : "http://localhost:8080/cities/1"
         }
       }
-    },
-
-    // ...
-
-    {
+    }, {
+      "name" : "HOLTSVILLE",
+      "stateCode" : "NY",
+      "postalCode" : "00544",
+      "latitude" : "+40.922326",
+      "longitude" : "-072.637078",
+      "county" : "SUFFOLK",
+      "_links" : {
+        "self" : {
+          "href" : "http://localhost:8080/cities/2"
+        },
+        "city" : {
+          "href" : "http://localhost:8080/cities/2"
+        }
+      }
+    }, {
+      "name" : "ADJUNTAS",
+      "stateCode" : "PR",
+      "postalCode" : "00601",
+      "latitude" : "+18.165273",
+      "longitude" : "-066.722583",
+      "county" : "ADJUNTAS",
+      "_links" : {
+        "self" : {
+          "href" : "http://localhost:8080/cities/3"
+        },
+        "city" : {
+          "href" : "http://localhost:8080/cities/3"
+        }
+      }
+    }, {
+      "name" : "AGUADA",
+      "stateCode" : "PR",
+      "postalCode" : "00602",
+      "latitude" : "+18.393103",
+      "longitude" : "-067.180953",
+      "county" : "AGUADA",
+      "_links" : {
+        "self" : {
+          "href" : "http://localhost:8080/cities/4"
+        },
+        "city" : {
+          "href" : "http://localhost:8080/cities/4"
+        }
+      }
+    }, 
+//...
+{
       "name" : "CASTANER",
-      "county" : "LARES",
       "stateCode" : "PR",
       "postalCode" : "00631",
       "latitude" : "+18.269187",
       "longitude" : "-066.864993",
+      "county" : "LARES",
       "_links" : {
         "self" : {
+          "href" : "http://localhost:8080/cities/20"
+        },
+        "city" : {
           "href" : "http://localhost:8080/cities/20"
         }
       }
     } ]
+  },
+  "_links" : {
+    "first" : {
+      "href" : "http://localhost:8080/cities?page=0&size=20"
+    },
+    "self" : {
+      "href" : "http://localhost:8080/cities{?page,size,sort}",
+      "templated" : true
+    },
+    "next" : {
+      "href" : "http://localhost:8080/cities?page=1&size=20"
+    },
+    "last" : {
+      "href" : "http://localhost:8080/cities?page=2137&size=20"
+    },
+    "profile" : {
+      "href" : "http://localhost:8080/profile/cities"
+    },
+    "search" : {
+      "href" : "http://localhost:8080/cities/search"
+    }
   },
   "page" : {
     "size" : 20,
@@ -218,7 +277,9 @@ Date: Tue, 27 May 2014 19:59:58 GMT
     "totalPages" : 2138,
     "number" : 0
   }
-}
+
+
+
 ---------------------------------------------------------------------
 
 . Try the following URL Paths in your browser or +curl+ to see how the application behaves:
