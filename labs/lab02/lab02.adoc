@@ -363,22 +363,7 @@ applications:
 ---------------------------------------------------------------------
 $ cf push
 
-...
 
-1 of 1 instances running
-
-App started
-
-Showing health and status for app cloud-native-spring...
-OK
-
-requested state: started
-instances: 1/1
-usage: 512M x 1 instances
-urls: cloud-native-spring.cfapps.io
-
-     state     since                    cpu    memory         disk
-#0   running   2014-05-27 04:15:05 PM   0.0%   433M of 512M   128.9M of 1G
 ---------------------------------------------------------------------
 
 . Access the application at the random route provided by CF:
