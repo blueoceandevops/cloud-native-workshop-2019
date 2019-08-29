@@ -16,7 +16,15 @@ Spring Boot includes a number of additional features to help you monitor and man
 
 **Actuator Endpoint**
 
-Now that we have set up our simple application, it is time to take a look at what Spring Actuator has to offer. 
+Now that we have set up our simple application, it is time to take a look at what Spring Actuator has to offer.
+
+Actuator is a set of features that help you monitor and manage your application when it moves away from your local development environment and onto a test, staging or production environment. It helps expose operational information about the running application – health, metrics, audit entries, scheduled task, env settings, etc. You can query the information via either several HTTP endpoints or JMX beans. Being able to view the information is useful, but it’s hard to spot trends or see the behaviour over a period of time.
+
+Micrometer is now the default metrics library in Spring Boot 2 and it doesn’t just give you metrics from your Spring application, but can also deliver JVM metrics (garbage collection and memory pools, etc) and also metrics from the application container. Micrometer has several different libraries that can be included to ship metrics to different backends and has support for Prometheus, Netflix Atlas, CloudWatch, Datadog, Graphite, Ganglia, JMX, Influx/Telegraf, New Relic, StatsD, SignalFx, and Wavefront.
+
+
+
+ 
 
 . Run the updated application
 +
