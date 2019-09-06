@@ -207,7 +207,7 @@ Before Spring Boot 2.0, metrics were single values, and organized in a tree-like
 Spring Boot 2.0 provides an endpoint http://localhost:8080/actuator/metrics that exposes several automatically collected metrics for your application as a dimensional first view.
 
 . Browse to http://localhost:8080/actuator/metrics. Review the metrics exposed.
-+
+
 [source,json]
 ---------------------------------------------------------------------
 {
