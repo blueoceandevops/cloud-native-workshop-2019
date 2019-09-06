@@ -48,35 +48,8 @@ Restart the application and try out the following endpoints. The output is omitt
 
 http://localhost:8080/actuator/health
 
-Displays Application and Datasource health information.  This can be customized based on application functionality, which we'll do later.
+Displays Application and Datasource health information.  This can be customized based on application functionality.
 
-http://localhost:8080/actuator/beans
-
-Dumps all of the beans in the Spring context.
-
-http://localhost:8080/actuator/configprops
-
-Displays a collated list of all @ConfigurationProperties.
-
-http://localhost:8080/actuator/env
-
-Dumps the application’s shell environment as well as all Java system properties.
-
-http://localhost:8080/actuator/mappings
-
-Dumps all URI request mappings and the controller methods to which they are mapped.
-
-http://localhost:8080/actuator/heapdump
-
-Performs a heap dump.
-
-http://localhost:8080/actuator/threaddump
-
-Performs a thread dump.
-
-http://localhost:8080/actuator/trace
-
-Displays trace information (by default the last few HTTP requests).
 
 **Secure the Endpoints**
 
@@ -190,67 +163,176 @@ This demo health indicator will randomize the health check.
 $ mvn clean spring-boot:run
 ---------------------------------------------------------------------
 
-. Browse to http://localhost:8080/health and verify that the output is similar to the following (and changes randomly!).
+. Browse to http://localhost:8080/actuator/health and verify that the output is similar to the following (and changes randomly!).
 +
 [source,json]
 ---------------------------------------------------------------------
 {
-  "status": "UP",
-  "flapping": {
-      "status": "UP",
-      "flapper": "ok",
-      "random": 42
-  },
-  "diskSpace": {
-      "status": "UP",
-      "free": 42345678945,
-      "threshold": 12345678
-  }
+"status": "UP",
+"details": {
+"flapping": {
+"status": "UP",
+"details": {
+"flapper": "ok",
+"random": 51
+}
+},
+"db": {
+"status": "UP",
+"details": {
+"database": "H2",
+"hello": 1
+}
+},
+"diskSpace": {
+"status": "UP",
+"details": {
+"total": 1000969428992,
+"free": 631523762176,
+"threshold": 10485760
+}
+}
+}
 }
 ---------------------------------------------------------------------
 
 == Metrics
 
-Spring Boot provides an endpoint http://localhost:8080/metrics that exposes several automatically collected metrics for your application. It also allows for the creation of custom metrics.
+In Spring Boot 2.0, there has been a major rewrite regarding how the /metrics HTTP endpoint is designed. Most importantly, there’s now a dedicated project regarding metrics, called Micrometer.
 
-. Browse to http://localhost:8080/metrics. Review the metrics exposed.
+Micrometer is a dimensional-first metrics collection facade whose aim is to allow you to time, count, and gauge your code with a vendor neutral API. Through classpath and configuration, you may select one or several monitoring systems to export your metrics data to. Think of it like SLF4J, but for metrics!
+
+Before Spring Boot 2.0, metrics were single values, and organized in a tree-like way. Those are best described as hierarchical metrics. 
+
+Spring Boot 2.0 provides an endpoint http://localhost:8080/actuator/metrics that exposes several automatically collected metrics for your application as a dimensional first view.
+
+. Browse to http://localhost:8080/actuator/metrics. Review the metrics exposed.
 +
 [source,json]
 ---------------------------------------------------------------------
 {
-"mem": 418830,
-"mem.free": 239376,
-"processors": 8,
-"instance.uptime": 59563,
-"uptime": 69462,
-"systemload.average": 1.5703125,
-"heap.committed": 341504,
-"heap.init": 262144,
-"heap.used": 102127,
-"heap": 3728384,
-"nonheap.committed": 79696,
-"nonheap.init": 2496,
-"nonheap.used": 77326,
-"nonheap": 0,
-"threads.peak": 14,
-"threads.daemon": 11,
-"threads.totalStarted": 17,
-"threads": 13,
-"classes": 9825,
-"classes.loaded": 9825,
-"classes.unloaded": 0,
-"gc.ps_scavenge.count": 9,
-"gc.ps_scavenge.time": 80,
-"gc.ps_marksweep.count": 2,
-"gc.ps_marksweep.time": 157,
-"httpsessions.max": -1,
-"httpsessions.active": 0,
-"gauge.response.metrics": 75,
-"gauge.response.star-star.favicon.ico": 9,
-"counter.status.200.star-star.favicon.ico": 1,
-"counter.status.200.metrics": 1
+"names": [
+"jvm.threads.states",
+"http.server.requests",
+"jdbc.connections.active",
+"process.files.max",
+"jvm.memory.used",
+"jvm.gc.memory.promoted",
+"jvm.memory.max",
+"system.load.average.1m",
+"jvm.gc.max.data.size",
+"jdbc.connections.max",
+"jdbc.connections.min",
+"jvm.memory.committed",
+"system.cpu.count",
+"logback.events",
+"tomcat.global.sent",
+"jvm.gc.pause",
+"jvm.buffer.memory.used",
+"tomcat.sessions.created",
+"jvm.threads.daemon",
+"system.cpu.usage",
+"jvm.gc.memory.allocated",
+"tomcat.global.request.max",
+"hikaricp.connections.idle",
+"hikaricp.connections.pending",
+"tomcat.global.request",
+"tomcat.sessions.expired",
+"hikaricp.connections",
+"jvm.threads.live",
+"jvm.threads.peak",
+"tomcat.global.received",
+"hikaricp.connections.active",
+"hikaricp.connections.creation",
+"process.uptime",
+"tomcat.sessions.rejected",
+"process.cpu.usage",
+"tomcat.threads.config.max",
+"jvm.classes.loaded",
+"hikaricp.connections.max",
+"hikaricp.connections.min",
+"jvm.classes.unloaded",
+"tomcat.global.error",
+"tomcat.sessions.active.current",
+"tomcat.sessions.alive.max",
+"jvm.gc.live.data.size",
+"hikaricp.connections.usage",
+"tomcat.threads.current",
+"hikaricp.connections.timeout",
+"process.files.open",
+"jvm.buffer.count",
+"jvm.buffer.total.capacity",
+"tomcat.sessions.active.max",
+"hikaricp.connections.acquire",
+"tomcat.threads.busy",
+"process.start.time"
+]
 }
 ---------------------------------------------------------------------
+
+To access a specific metric, we need to append the metric’s name to the path, e.g. /metrics/http.server.requests. The output looks like the following:
++
+[source,json]
+---------------------------------------------------------------------
+
+"name": "http.server.requests",
+"description": null,
+"baseUnit": "seconds",
+"measurements": [
+{
+"statistic": "COUNT",
+"value": 5
+},
+{
+"statistic": "TOTAL_TIME",
+"value": 0.26881810500000003
+},
+{
+"statistic": "MAX",
+"value": 0
+}
+],
+"availableTags": [
+{
+"tag": "exception",
+"values": [
+"None"
+]
+},
+{
+"tag": "method",
+"values": [
+"POST",
+"GET"
+]
+},
+{
+"tag": "uri",
+"values": [
+"REDIRECTION",
+"/actuator/metrics",
+"root"
+]
+},
+{
+"tag": "outcome",
+"values": [
+"REDIRECTION",
+"SUCCESS"
+]
+},
+{
+"tag": "status",
+"values": [
+"302",
+"200"
+]
+}
+]
+}
+---------------------------------------------------------------------
+
+
 
 . Stop the cloud-native-spring application.
 
@@ -262,58 +344,7 @@ Spring Boot provides an endpoint http://localhost:8080/metrics that exposes seve
 $ mvn clean package
 ---------------------------------------------------------------------
 
-. When running a Spring Boot application on Pivotal Cloud Foundry with the actuator endpoints enabled, you can visualize actuator management information on the Applications Manager app dashboard.  To enable this there are a few properties we need to add.  Add the following to */cloud-native-spring/src/main/resources/application.yml*:
-+
-[source, yaml]
----------------------------------------------------------------------
-management:
-  security:
-    enabled: false
-  info:
-    git:
-      mode: full
-  cloudfoundry:
-    enabled: true
-    skip-ssl-validation: true
----------------------------------------------------------------------
 
-. In order to add full build information to you artifact that is pushed to cloudfoundry, update */cloud-native-spring/pom.xml* and add the following execution and classifier to the spring-boot-maven-plugin:
-+
-[source, xml]
----------------------------------------------------------------------
-<executions>
-  <execution>
-	  <goals>
-		  <goal>build-info</goal>
-		</goals>
-	</execution>
-</executions>
-<configuration>
-	<classifier>exec</classifier>
-</configuration>
----------------------------------------------------------------------
-+
-The full plugin config should look like the following:
-+
-[source, xml]
----------------------------------------------------------------------
-<plugin>
-	<groupId>org.springframework.boot</groupId>
-	<artifactId>spring-boot-maven-plugin</artifactId>
-	<executions>
-		<execution>
-			<goals>
-			  <goal>build-info</goal>
-		  </goals>
-	  </execution>
-  </executions>
-	<configuration>
-	  <classifier>exec</classifier>
-  </configuration>
-</plugin>
----------------------------------------------------------------------
-
-. By specifying a classifier we actually just produced 2 jars, one that is executable and one that can be used as an artifact that could be included in other apps (such as our Client UI app).  Because of this we need to change the name of the jar we included in our manifest.yml file.  Change the jar in the path property to *./target/cloud-native-spring-0.0.1-SNAPSHOT-exec.jar*:
 +
 [source, yaml]
 ---------------------------------------------------------------------
