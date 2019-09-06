@@ -311,9 +311,37 @@ $ curl -i "localhost:8080/cities"
 HTTP/1.1 200 
 Content-Type: application/hal+json;charset=UTF-8
 Transfer-Encoding: chunked
-Date: Thu, 29 Aug 2019 12:23:34 GMT
+Date: Fri, 06 Sep 2019 06:45:20 GMT
+//................
+ },
+  "_links" : {
+    "first" : {
+      "href" : "http://localhost:8080/cities?page=0&size=20"
+    },
+    "self" : {
+      "href" : "http://localhost:8080/cities{?page,size,sort}",
+      "templated" : true
+    },
+    "next" : {
+      "href" : "http://localhost:8080/cities?page=1&size=20"
+    },
+    "last" : {
+      "href" : "http://localhost:8080/cities?page=2137&size=20"
+    },
+    "profile" : {
+      "href" : "http://localhost:8080/profile/cities"
+    },
+    "search" : {
+      "href" : "http://localhost:8080/cities/search"
+    }
+  },
+  "page" : {
+    "size" : 20,
+    "totalElements" : 42741,
+    "totalPages" : 2138,
+    "number" : 0
+  }
 
-// (Remainder omitted...)
 ---------------------------------------------------------------------
 
 . Access the new +search+ endpoint:
