@@ -169,17 +169,17 @@ $ curl -i localhost:8080/cities
 HTTP/1.1 200 
 Content-Type: application/hal+json;charset=UTF-8
 Transfer-Encoding: chunked
-Date: Thu, 29 Aug 2019 10:47:50 GMT
+Date: Fri, 06 Sep 2019 06:40:11 GMT
 
 {
   "_embedded" : {
     "cities" : [ {
       "name" : "HOLTSVILLE",
+      "country" : "SUFFOLK",
       "stateCode" : "NY",
       "postalCode" : "00501",
       "latitude" : "+40.922326",
       "longitude" : "-072.637078",
-      "county" : "SUFFOLK",
       "_links" : {
         "self" : {
           "href" : "http://localhost:8080/cities/1"
@@ -190,11 +190,11 @@ Date: Thu, 29 Aug 2019 10:47:50 GMT
       }
     }, {
       "name" : "HOLTSVILLE",
+      "country" : "SUFFOLK",
       "stateCode" : "NY",
       "postalCode" : "00544",
       "latitude" : "+40.922326",
       "longitude" : "-072.637078",
-      "county" : "SUFFOLK",
       "_links" : {
         "self" : {
           "href" : "http://localhost:8080/cities/2"
@@ -205,11 +205,11 @@ Date: Thu, 29 Aug 2019 10:47:50 GMT
       }
     }, {
       "name" : "ADJUNTAS",
+      "country" : "ADJUNTAS",
       "stateCode" : "PR",
       "postalCode" : "00601",
       "latitude" : "+18.165273",
       "longitude" : "-066.722583",
-      "county" : "ADJUNTAS",
       "_links" : {
         "self" : {
           "href" : "http://localhost:8080/cities/3"
@@ -218,30 +218,15 @@ Date: Thu, 29 Aug 2019 10:47:50 GMT
           "href" : "http://localhost:8080/cities/3"
         }
       }
-    }, {
-      "name" : "AGUADA",
-      "stateCode" : "PR",
-      "postalCode" : "00602",
-      "latitude" : "+18.393103",
-      "longitude" : "-067.180953",
-      "county" : "AGUADA",
-      "_links" : {
-        "self" : {
-          "href" : "http://localhost:8080/cities/4"
-        },
-        "city" : {
-          "href" : "http://localhost:8080/cities/4"
-        }
-      }
-    }, 
+    }
 //...
-{
+ {
       "name" : "CASTANER",
+      "country" : "LARES",
       "stateCode" : "PR",
       "postalCode" : "00631",
       "latitude" : "+18.269187",
       "longitude" : "-066.864993",
-      "county" : "LARES",
       "_links" : {
         "self" : {
           "href" : "http://localhost:8080/cities/20"
@@ -268,9 +253,6 @@ Date: Thu, 29 Aug 2019 10:47:50 GMT
     },
     "profile" : {
       "href" : "http://localhost:8080/profile/cities"
-    },
-    "search" : {
-      "href" : "http://localhost:8080/cities/search"
     }
   },
   "page" : {
@@ -279,6 +261,7 @@ Date: Thu, 29 Aug 2019 10:47:50 GMT
     "totalPages" : 2138,
     "number" : 0
   }
+
 
 
 
